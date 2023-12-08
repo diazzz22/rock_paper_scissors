@@ -3,42 +3,53 @@ function getComputerChoice () {
     const indiceAleatorio = Math.floor(Math.random() * opciones.length);
     return opciones[indiceAleatorio];
 }
-const seleccion_pc = getComputerChoice();
-console.log(seleccion_pc);
-function getPlayerChoice() {
-    let opcion = "";
-    
-    while (opcion !== 4) {
-    console.log("1. piedra");
-    console.log("2. papel");
-    console.log("3. tijera");
-    console.log("4. salir");
+console.log("El contricante ha elegido:");
+console.log(getComputerChoice());
 
-    opcion = prompt("Elige una opción (1-4):");
+//constante para la selección del pc
+const computerSelection = getComputerChoice();
 
-    switch (opcion) {
-        case "1":
-            console.log("Seleccionaste piedra");
-            let seleccionjugador = "piedra";
-            break;
-        case "2":
-            console.log("Seleccionaste papel");
-            seleccionjugador = "papel";
-            break;
-        case "3":
-            console.log("Seleccionaste tijera");
-            seleccionjugador = "tijera";
-            break;
-        case "4":
-            console.log("Seleccionaste salir");
-            break;
-        default:
-            console.log("Opción no válida. Por favor, elige una opción válida");
-            break;
-        }
+function playRound (playerSelection,computerSelection){
+   // const jugador = playerSelection.toLowerCase();
+//tres opciones del piedra del jugador 
+    if (computerSelection == "papel" && playerSelection == "piedra") {
+        console.log("has perdido");
+    } 
+    if (computerSelection == "piedra" && playerSelection == "piedra") {
+        console.log("empate");
+    }
+    if (computerSelection == "tijeras" && playerSelection == "piedra") {
+        console.log("has ganado");
+    }
+//tres opciones del papel del jugador 
+    if (computerSelection == "piedra" && playerSelection == "papel ") {
+        console.log("has ganado");
+    }
+    if (computerSelection == "papel" && playerSelection == "papel ") {
+        console.log("empate");
+    }
+    if (computerSelection == "tijeras" && playerSelection == "papel ") {
+        console.log("has perdido");
+    }
+//tres opciones del tijeras del jugador
+    if (computerSelection == "piedra" && playerSelection == "tijeras ") {
+    console.log("has perdidos");
+    }
+    if (computerSelection == "papel" && playerSelection == "tijeras ") {
+    console.log("has ganado");
+    }
+    if (computerSelection == "tijera" && playerSelection == "tijeras ") {
+    console.log("empate");
     }
 }
-getPlayerChoice();
+
+
+//contante para la selección del jugador
+const playerSelection = "piedra";
+//DESCOMENTAR CUANDO SE ACABEN LAS COMPROBACIONES
+console.log(playRound(playerSelection,computerSelection));
+
+
 /*function funcion_general (seleccion_jugador,seleccion_pc) {
     const jugador = seleccion_jugador.toLowerCase();
     const pc = seleccion_pc;
