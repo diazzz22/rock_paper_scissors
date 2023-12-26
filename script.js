@@ -2,12 +2,24 @@ function game() {
     
     for (let i = 0; i < 5; i++) {
         const playerSelection = prompt("Que eliges? Piedra, papel o tijeras?");
+        const opciones = ["piedra","papel","tijeras"];
+        if (!opciones.includes(playerSelection)) {
+            console.error("Error: Por favor, elige entre piedra papel o tijeras.");
+            setTimeout(function () {
+                // Recargar la página
+                location.reload();
+            }, 3000);
+    
+            return; // Salir de la función en caso de error
+        }
+    
         console.log("---- Ronda " + (i+1) + " ----");
         function getComputerChoice () {
             const opciones = ["piedra","papel","tijeras"];
             const indiceAleatorio = Math.floor(Math.random() * opciones.length);
             return opciones[indiceAleatorio];
         }
+        
         console.log("El contricante ha elegido:");
         //constante para la selección del pc
         const computerSelection = getComputerChoice();
@@ -24,7 +36,7 @@ function game() {
         } 
         if (computerSelection == "piedra" && jugador == "piedra" || 
             computerSelection == "papel" && jugador == "papel" ||
-            computerSelection == "tijera" && jugador == "tijeras"){
+            computerSelection == "tijeras" && jugador == "tijeras"){
             console.log("empate");
         }
         if (computerSelection == "tijeras" && jugador == "piedra" || 
